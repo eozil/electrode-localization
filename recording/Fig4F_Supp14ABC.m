@@ -1,4 +1,5 @@
-%% -------------------- Save Hierarchical Clustering Data --------------------
+%% Magnetic Resonance Identification Tags for Ultra-Flexible Electrodes
+%% -------------------- Hierarchical Clustering Data --------------------
 % Author: Peter Gombkoto, Ph.D.
 %
 % Description:

@@ -1,7 +1,24 @@
 %% Magnetic Resonance Identification Tags for Ultra-Flexible Electrodes
 % This script generates Figure 4D and Supplementary Figure 12
 % from the manuscript:
-% "Magnetic resonance identification tags for ultra-flexible electrodes"
+% "Magnetic Resonance Identification Tags for Ultra-Flexible Electrodes"
+%
+% Description:
+% This script processes electrophysiological and MRI-related data to
+% reproduce the figures associated with ultra-flexible electrode
+% localization and validation.
+%
+% If the raw data required for full processing are not available
+% (e.g., due to missing files or restricted access), the script
+% automatically falls back to loading precomputed variables from a
+% cached file. These cached variables are sufficient to reproduce
+% the figures without rerunning the full analysis pipeline.
+%
+% For access to the raw data or questions regarding data availability,
+% please contact the author.
+%
+% Author: Peter Gombkoto, Ph.D.
+% Email: pgombkoto@ethz.ch
 
 try
 

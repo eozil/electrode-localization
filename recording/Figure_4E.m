@@ -1,5 +1,5 @@
+%% Magnetic Resonance Identification Tags for Ultra-Flexible Electrodes
 %% Figure 4E – Spike amplitude vs. depth and mean spike waveform
-% Magnetic resonance identification tags for ultra-flexible electrodes
 %
 % This script generates Figure 4E, showing:
 %   (1) Average spike amplitude as a function of electrode depth, and

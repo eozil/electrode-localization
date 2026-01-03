@@ -1,3 +1,35 @@
+%% Magnetic Resonance Identification Tags for Ultra-Flexible Electrodes
+%  This script loads spike-sorted single-unit activity from rat rEO_10 and
+%  quantifies peri–sharp-wave ripple (SWR) population dynamics. If a
+%  previously computed summary structure (Cells) is available
+%  (Fig4G_Suppl_15.mat), it is loaded to skip the full preprocessing; 
+%  otherwise the script:
+%
+%   1) Loads spike sorting outputs (spike times, cluster assignments, sites,
+%      waveforms, SNR, etc.) together with curated SWR event timestamps.
+%   2) Loads probe mapping/metadata from the .prm file to obtain channel
+%      geometry, scaling, and sampling rate.
+%   3) Assigns each cluster a putative anatomical structure and hemisphere
+%      based on external channel-to-structure mapping text files (right and
+%      left hemisphere maps).
+%   4) For each well-sampled unit (>=100 spikes), computes basic spike-train
+%      descriptors (autocorrelogram, ISI histogram) and builds per-ripple
+%      peri-event spike histograms in fixed time windows around ripple
+%      centers. Peri-event responses are Gaussian-smoothed and converted to
+%      z-scored kernel-smoothed firing rate traces.
+%   5) Builds a population activity matrix (neurons × time) and visualizes
+%      it as a heatmap for the left hemisphere (Fig. 4G / Suppl. Fig. 15A).
+%   6) Runs PCA on population responses around SWRs, estimates the optimal
+%      k-means cluster number using the Calinski–Harabasz criterion, and
+%      sorts the heatmap by cluster assignment.
+%   7) Performs cluster-level statistics by comparing mean activity during
+%      a ripple-centered window versus a spontaneous baseline window using
+%      two-sample t-tests (alpha = 0.01), and visualizes distributions with
+%      mean±STD and violin-style plots (Suppl. Fig. 15B).
+
+% Author: Peter Gombkoto, Ph.D.
+% Email: pgombkoto@ethz.ch
+
 %% =========================================================================
 %  Rat identifier
 % =========================================================================
@@ -20,7 +52,7 @@ end
 if  hasStatSummary == 0
     folder = ['G:\Yanik Lab Dropbox\Peter Gombkoto\Localization Manuscript 2024\' ...
         'RAT DATA\rEO_10\recording\05_241022_134111_selected\' ...
-        'New_Sorting_for_the_paper\5_241022_134111'];
+        'New_Sorting_for_the_paper\05_241022_134111'];
 
     cd(folder)
 
